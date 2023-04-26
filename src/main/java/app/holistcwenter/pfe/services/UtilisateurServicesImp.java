@@ -68,11 +68,7 @@ public class UtilisateurServicesImp implements UtilisateurService {
 		return utilisateurRepository.findByEmail(email);
 	}
 
-	/*@Override
-	public List<Long> Tab(Long id) {
-		
-		return utilisateurRepository.findTabValues();
-	}*/
+	
 
 
 

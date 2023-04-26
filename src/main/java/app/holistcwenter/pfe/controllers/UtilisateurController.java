@@ -95,13 +95,12 @@ public class UtilisateurController {
 		    	  return utilisateur.getId();
 		      }else {
 				return null ;
-			}
-		      	
+			}	
 		      
 		    }
 	@GetMapping(path = "/random/{idExclu}")
 	public List<Utilisateur> getUtilisateursAleatoires(@PathVariable Long idExclu) {
-	    List<Utilisateur> utilisateurs = utilisateurService.getAllUtilisateurs();
+		    List<Utilisateur> utilisateurs = utilisateurService.getAllUtilisateurs();
 	    utilisateurs = utilisateurs.stream()
 	        .filter(u -> !u.getId().equals(idExclu))
 	        .collect(Collectors.toList());
