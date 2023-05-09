@@ -1,5 +1,6 @@
 package app.holistcwenter.pfe.controllers;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.holistcwenter.pfe.entities.Comment;
 import app.holistcwenter.pfe.entities.Publication;
 import app.holistcwenter.pfe.entities.Utilisateur;
 import app.holistcwenter.pfe.services.PublicationService;
@@ -35,11 +37,12 @@ public class PublicationController {
 	}
 	@GetMapping(path = "/{id}")//localhost:8080/publication/3  
 	public ResponseEntity<Publication> findUtilisateurById(@PathVariable Long id) {
-	 	Publication Publication = publicationService.findPubsById(id);
-	 	if(Publication == null) {	
+	 	Publication publication = publicationService.findPubsById(id);
+	 	
+	 	if(publication == null) {	
 	 		return new ResponseEntity<Publication>(HttpStatus.NO_CONTENT);
 	 	}else {
-			return new ResponseEntity<Publication>(Publication,HttpStatus.OK);
+			return new ResponseEntity<Publication>(publication,HttpStatus.OK);
 		}
 	} 
 
@@ -63,6 +66,7 @@ public class PublicationController {
 	@GetMapping(path = "/findbyIdUser/{iduser}")//localhost:8080/publication/findbyIdUser{iduser}  
 	public ResponseEntity<List<Publication>> findPublicationByIdUser(@PathVariable Long iduser) {
 	 	List<Publication> publication = publicationService.findByIdUser(iduser);
+	 	 publication.sort(Comparator.comparing(Publication::getDate_pub).reversed());
 	 	if(publication.isEmpty()) {
 	 		return new ResponseEntity<List<Publication>>(HttpStatus.NO_CONTENT);
 	 	}else {

@@ -45,11 +45,6 @@ public class AmisController {
         	amisService.deleteAmis(id);
 	}
 	
-	
-	
-	
-	
-	
 	@GetMapping(path = "/{idCompte}")//localhost:8080/amis/3  
 	public ResponseEntity<List<Amis>> findAmisById(@PathVariable Long idCompte) {
 	 	List<Amis> amis = amisService.findByIdCompte(idCompte);

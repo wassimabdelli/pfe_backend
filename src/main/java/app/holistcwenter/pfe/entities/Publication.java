@@ -3,10 +3,12 @@ package app.holistcwenter.pfe.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 @Entity
 public class Publication implements Serializable {
@@ -21,7 +23,8 @@ public class Publication implements Serializable {
 
     private Date date_pub;
 
-
+	    private String img_pub;
+	    
     public Long getId() {
         return id;
     }
@@ -53,4 +56,16 @@ public class Publication implements Serializable {
     public void setDate_pub(Date date_pub) {
         this.date_pub = date_pub;
     }
+
+	public String getImg_pub() {
+		return img_pub;
+	}
+
+	public void setImg_pub(String img_pub) {
+		this.img_pub = img_pub;
+	}
+
+
+
+    
 }
