@@ -51,6 +51,7 @@ public class CommentController {
 	@GetMapping(path = "/{idUser}/{idPub}")
 	public List<Comment> findCommentsByidUserETidPub(@PathVariable Long idUser, @PathVariable Long idPub) {
 	    List<Comment> comments = commentService.findByIdUserIdPub(idUser, idPub);
+	    comments.sort(Comparator.comparing(Comment::getDate).reversed());
 	    return comments;
 	}
 	@GetMapping(path = "/{idPub}")

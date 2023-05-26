@@ -11,6 +11,5 @@ import app.holistcwenter.pfe.entities.Utilisateur;
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>  {
 	public List<Utilisateur> findByFirstName(String firstName);
 	public Utilisateur findByEmail(String email);
-	//List<Long> findTabValues();
 		
 }

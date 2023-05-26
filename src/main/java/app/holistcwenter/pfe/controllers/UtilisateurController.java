@@ -26,7 +26,7 @@ public class UtilisateurController {
 	@Autowired					
 	private UtilisateurService utilisateurService;
 	
-	@GetMapping //(path = "/getallutilisateurs") //localhost:8080/utilisateur/getallutilisateurs  
+	@GetMapping  
 	public List<Utilisateur> getAllUtilisateurs() {
 		
 		return utilisateurService.getAllUtilisateurs();
@@ -70,24 +70,6 @@ public class UtilisateurController {
 			return new ResponseEntity<List<Utilisateur>>(utilisateur,HttpStatus.OK);
 		}
 	} 
-	
-	/*
-	@GetMapping(path = "/login/{email}/{password}")//localhost:8080/utilisateur/"/login/email/password
-	 public Long authenticate(@PathVariable String email,@PathVariable  String password) {
-		    Utilisateur utilisateur = utilisateurService.findByEmail(email);
-
-		    if (utilisateur == null) {
-		        return null;
-		      }
-
-		      if (!password.equals(utilisateur.getPassword())) {
-		        return null;
-		      }
-		      	
-		      return utilisateur.getId();
-		    }
-
-		  }*/
 	@GetMapping(path = "/login/{email}/{password}")//localhost:8080/utilisateur/"/login/email/password
 	 public Long authenticate(@PathVariable String email,@PathVariable  String password) {
 		    Utilisateur utilisateur = utilisateurService.findByEmail(email);

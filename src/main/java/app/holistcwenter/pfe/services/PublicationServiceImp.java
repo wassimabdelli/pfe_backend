@@ -62,6 +62,11 @@ public class PublicationServiceImp implements PublicationService {
 			
 			return publicationRepository.findByIdUser(IdUser);
 		}
+
+	@Override
+	public List<Publication> findByIdUserAndType(Long idUser, String type) {
+		return publicationRepository.findByIdUserAndType(idUser, type);
+	}
 	
 
 	

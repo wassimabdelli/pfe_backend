@@ -11,4 +11,6 @@ public interface AmisService {
 	public void deleteAmis(Long id); 
 	//Methode Avancées
 	List<Amis> findByIdCompte(Long idCompte);
+	List<Amis> findByIdCompteAndIdAmi(Long idCompte , Long idAmi);
+	List<Amis> findByIdAmiAndIdCompte(Long idAmi , Long idCompte);
 }

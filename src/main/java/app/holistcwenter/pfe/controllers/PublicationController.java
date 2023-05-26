@@ -1,7 +1,9 @@
 package app.holistcwenter.pfe.controllers;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +49,7 @@ public class PublicationController {
 	} 
 
 	@PostMapping
-	public Publication createPublicatio(@RequestBody Publication publication) 
+	public Publication createPublication(@RequestBody Publication publication) 
 	{
 
 		return publicationService.createPublication(publication);
@@ -76,7 +78,27 @@ public class PublicationController {
 	
 	
 	
+	@GetMapping(path = "/findbyIdUser/{iduser}/{type}")//localhost:8080/publication/findbyIdUser{iduser}  
+	public ResponseEntity<List<Publication>> findPublicationByIdUserAndType(@PathVariable Long iduser , @PathVariable String type) {
+	 	List<Publication> publication = publicationService.findByIdUserAndType(iduser,type);
+	 	 publication.sort(Comparator.comparing(Publication::getDate_pub).reversed());
+	 	if(publication.isEmpty()) {
+	 		return new ResponseEntity<List<Publication>>(HttpStatus.NO_CONTENT);
+	 	}else {
+			return new ResponseEntity<List<Publication>>(publication,HttpStatus.OK);
+		}
+	} 
 	
+	
+	@GetMapping(path = "/randomPubs")
+	public List<Publication> getPublicationsAleatoires() {
+		    List<Publication> pubs = publicationService.getAllPubs();
+		    int l = pubs.size() / 2; 
+		    pubs = pubs.stream()
+	        .collect(Collectors.toList());
+	    Collections.shuffle(pubs);
+	    return pubs.subList(0, l);
+	}
 	
 	
 	

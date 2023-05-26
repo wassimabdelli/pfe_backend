@@ -1,6 +1,8 @@
 package app.holistcwenter.pfe.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +45,14 @@ public class ConversationController {
 	public void deleteMsg(@PathVariable Long id) {
 		conversationService.deleteConversation(id);
 	}
-	@GetMapping(path = "/{emutteur}/{destinataire}")
-	public List<Conversation> findMsgByEmutteurETdestinataire(@PathVariable Long emutteur, @PathVariable Long destinataire) {
-	    List<Conversation> MSGEmuttuer = conversationService.findByEmetteurAndDestinataire(emutteur, destinataire);
-	    List<Conversation> MSGsDestinataire  = conversationService.findByDestinataireAndEmetteur(emutteur, destinataire);
-	    List<Conversation> Msg = new ArrayList<>();
-	    Msg.addAll(MSGsDestinataire);
-	    Msg.addAll(MSGEmuttuer);
-	    return Msg;
-	}
+		@GetMapping(path = "/{emutteur}/{destinataire}")
+		public List<Conversation> findMsgByEmutteurETdestinataire(@PathVariable Long emutteur, @PathVariable Long destinataire) {
+		    List<Conversation> MSGEmuttuer = conversationService.findByEmetteurAndDestinataire(emutteur, destinataire);
+		    List<Conversation> MSGsDestinataire  = conversationService.findByDestinataireAndEmetteur(emutteur, destinataire);
+		    List<Conversation> Msg = new ArrayList<>();
+		    Msg.addAll(MSGsDestinataire);
+		    Msg.addAll(MSGEmuttuer);
+		    Msg.sort(Comparator.comparing(Conversation::getId));
+		    return Msg;
+		}
 }

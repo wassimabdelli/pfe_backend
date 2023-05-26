@@ -23,8 +23,9 @@ public class Publication implements Serializable {
 
     private Date date_pub;
 
-	    private String img_pub;
+	private String img_pub;
 	    
+	private String type;
     public Long getId() {
         return id;
     }
@@ -65,7 +66,15 @@ public class Publication implements Serializable {
 		this.img_pub = img_pub;
 	}
 
+	public String getType() {
+		return type;
+	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 
     
 }

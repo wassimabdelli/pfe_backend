@@ -1,6 +1,5 @@
 package app.holistcwenter.pfe.entities;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
@@ -9,14 +8,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Comment implements Serializable {
+public class Rep_Ch {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
- 	private Long idPub;
+ 	private Long idCh;
  	private Long idUser;
  	private Date date;
- 	private String contenu;
+ 	private String img;
  	private String type ;
 	public Long getId() {
 		return id;
@@ -24,11 +23,11 @@ public class Comment implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getIdPub() {
-		return idPub;
+	public Long getIdCh() {
+		return idCh;
 	}
-	public void setIdPub(Long idPub) {
-		this.idPub = idPub;
+	public void setIdCh(Long idCh) {
+		this.idCh = idCh;
 	}
 	public Long getIdUser() {
 		return idUser;
@@ -42,11 +41,11 @@ public class Comment implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getContenu() {
-		return contenu;
+	public String getImg() {
+		return img;
 	}
-	public void setContenu(String contenu) {
-		this.contenu = contenu;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	public String getType() {
 		return type;
@@ -54,7 +53,6 @@ public class Comment implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-
  	
-
+ 	
 }

@@ -16,5 +16,6 @@ public interface PublicationService {
 	public void deletePublication(Long id); 
 	//Methode avacée 
 	public List<Publication> findByIdUser(Long IdUser);
+	List<Publication> findByIdUserAndType(Long idUser , String type);
 
 }

@@ -1,6 +1,7 @@
 package app.holistcwenter.pfe.controllers;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.holistcwenter.pfe.entities.Amis;
-import app.holistcwenter.pfe.entities.Reaction;
 import app.holistcwenter.pfe.services.AmisService;
 
 @RestController
@@ -58,7 +58,7 @@ public class AmisController {
 	
 	
 	
-	@GetMapping(path = "/chercher/{idCompte}")//localhost:8080/amis/3  
+	@GetMapping(path = "/chercher/{idCompte}")
 	public List<Long> findIdAmis(@PathVariable Long idCompte) {
 	 	List<Amis> amis = amisService.findByIdCompte(idCompte);
 	 	List idAMI = new ArrayList<>();
@@ -75,7 +75,16 @@ public class AmisController {
 	
 	
 	
-	
+	@GetMapping(path = "/{idCompte}/{idAmi}")
+	public List<Amis> findMsgByEmutteurETdestinataire(@PathVariable Long idCompte, @PathVariable Long idAmi) {
+	    List<Amis> amis1 = amisService.findByIdAmiAndIdCompte(idAmi, idCompte);
+	    List<Amis> amis2  = amisService.findByIdCompteAndIdAmi(idAmi, idCompte);
+	    List<Amis> amis = new ArrayList<>();
+	    amis.addAll(amis1);
+	    amis.addAll(amis2);
+	    amis.sort(Comparator.comparing(Amis::getId));
+	    return amis;
+	}
 	
 	
 	

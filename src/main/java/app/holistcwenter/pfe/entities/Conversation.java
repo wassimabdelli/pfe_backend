@@ -18,7 +18,9 @@ public class Conversation implements Serializable  {
  	private Long destinataire;
  	private String message;
  	private Date date;
- 	
+ 	private String typeE;
+ 	private String typeD;
+ 
 	public Long getId() {
 		return id;
 	}
@@ -49,5 +51,18 @@ public class Conversation implements Serializable  {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public String getTypeE() {
+		return typeE;
+	}
+	public void setTypeE(String typeE) {
+		this.typeE = typeE;
+	}
+	public String getTypeD() {
+		return typeD;
+	}
+	public void setTypeD(String typeD) {
+		this.typeD = typeD;
+	}
+
  	
 }

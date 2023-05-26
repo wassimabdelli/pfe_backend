@@ -15,6 +15,7 @@ public class Reaction implements Serializable {
 	 	private Long idPub;
 	 	private Long idUser;
 	 	private String type;
+	 	private String compteType;
 		public Long getId() {
 			return id;
 		}
@@ -38,6 +39,12 @@ public class Reaction implements Serializable {
 		}
 		public void setType(String type) {
 			this.type = type;
+		}
+		public String getCompteType() {
+			return compteType;
+		}
+		public void setCompteType(String compteType) {
+			this.compteType = compteType;
 		}
 		
 	 	

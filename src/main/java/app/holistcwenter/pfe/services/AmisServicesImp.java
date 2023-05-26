@@ -35,5 +35,14 @@ public class AmisServicesImp implements AmisService {
 		return amisRepository.findByIdCompte(idCompte);
 	}
 
+	@Override
+	public List<Amis> findByIdCompteAndIdAmi(Long idCompte, Long idAmi) {
+		return amisRepository.findByIdCompteAndIdAmi(idCompte, idAmi);
+	}
+
+	@Override
+	public List<Amis> findByIdAmiAndIdCompte(Long idAmi, Long idCompte) {
+		return amisRepository.findByIdAmiAndIdCompte(idAmi, idCompte);
+	}
 
 }

@@ -13,10 +13,8 @@ public interface UtilisateurService {
 	public Utilisateur updateUtilisateur(Utilisateur utilisateur);  
 	public void deleteUtilisateur(Long id); 
 	
-	//methode avacees
+	//methode avancees
 	public List<Utilisateur> findByFirstName(String firstName);
 	public Utilisateur findByEmail(String email);
-//	public List<Long> Tab(Long id);
-	
 	
 }

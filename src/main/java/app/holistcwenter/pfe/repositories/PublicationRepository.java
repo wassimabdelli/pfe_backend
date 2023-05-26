@@ -12,5 +12,6 @@ import app.holistcwenter.pfe.entities.Utilisateur;
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
 
 	List<Publication> findByIdUser(Long idUser);
+	List<Publication> findByIdUserAndType(Long idUser , String type);
 
 }

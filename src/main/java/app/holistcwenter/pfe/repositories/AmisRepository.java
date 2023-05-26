@@ -11,5 +11,7 @@ public interface AmisRepository extends JpaRepository<Amis, Long> {
 	
 	Amis findByIdAmi(Long idAmi);
 	List<Amis> findByIdCompte(Long idCompte);
+	List<Amis> findByIdCompteAndIdAmi(Long idCompte , Long idAmi);
+	List<Amis> findByIdAmiAndIdCompte(Long idAmi , Long idCompte);
 
 }
