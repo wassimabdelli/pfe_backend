@@ -62,12 +62,12 @@ public class AssociationController {
 	}
 	
 	@PutMapping
-	public Association updateUtilisateur(@RequestBody Association association) {
+	public Association updateAssoc(@RequestBody Association association) {
 			
 			return associationService.UpdateAssociation(association);
 		}
 	@DeleteMapping(path = "/{id}") //localhost:8080/association/3  
-	public void deleteUtilisateur(@PathVariable Long id) {
+	public void deleteAssociation(@PathVariable Long id) {
 		
 		 associationService.deleteAssociation(id);
 	}

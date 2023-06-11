@@ -38,7 +38,7 @@ public class PublicationController {
 		return publicationService.getAllPubs();	
 	}
 	@GetMapping(path = "/{id}")//localhost:8080/publication/3  
-	public ResponseEntity<Publication> findUtilisateurById(@PathVariable Long id) {
+	public ResponseEntity<Publication> findPublicationById(@PathVariable Long id) {
 	 	Publication publication = publicationService.findPubsById(id);
 	 	
 	 	if(publication == null) {	

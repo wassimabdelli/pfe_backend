@@ -32,12 +32,12 @@ public class ReactionController {
 	}
 	
 	@GetMapping	
-	public List<Reaction> getAllpubs() {
+	public List<Reaction> getAllReactions() {
 		return reactionService.getAllReactions();	
 	}
 	
 	@GetMapping(path = "/{idPub}")//localhost:8080/Reaction/3  
-	public ResponseEntity<List<Reaction>> findUtilisateurById(@PathVariable Long idPub) {
+	public ResponseEntity<List<Reaction>> findReactionById(@PathVariable Long idPub) {
 	 	List<Reaction> reaction = reactionService.findByIdPub(idPub);
 	 	if(reaction == null) {	
 	 		return new ResponseEntity<List<Reaction>>(HttpStatus.NO_CONTENT);
@@ -47,7 +47,7 @@ public class ReactionController {
 	}
 	
 	@PostMapping
-	public Reaction createPublicatio(@RequestBody Reaction reaction) 
+	public Reaction createReaction(@RequestBody Reaction reaction) 
 	{
 
 		return reactionService.createReaction(reaction);
@@ -60,7 +60,7 @@ public class ReactionController {
 		}
 	
 	@DeleteMapping(path = "/{idUser}/{idPub}") //localhost:8080/reaction/3  
-	public void deletePublication(@PathVariable Long idUser,@PathVariable Long idPub  ) {
+	public void deleteReaction(@PathVariable Long idUser,@PathVariable Long idPub  ) {
 		
 		  Reaction reaction= reactionService.findByIdUserIdPub(idUser, idPub);
 		reactionService.deleteReaction(reaction);

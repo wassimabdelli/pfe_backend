@@ -30,7 +30,7 @@ public class FollowersController {
 		return followersService.getAllFollowers();	
 	}
 	@PostMapping
-	public Followers createAbonnement(@RequestBody Followers followers) 
+	public Followers createFollow(@RequestBody Followers followers) 
 	{
 
 		return followersService.createFollow(followers);

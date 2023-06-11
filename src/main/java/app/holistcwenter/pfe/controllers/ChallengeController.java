@@ -1,7 +1,9 @@
 package app.holistcwenter.pfe.controllers;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +38,7 @@ public class ChallengeController {
 	}
 	
 	@GetMapping(path = "/{id}")//localhost:8080/challenge/3  
-	public ResponseEntity<Challenge> findUtilisateurById(@PathVariable Long id) {
+	public ResponseEntity<Challenge> findChallengesById(@PathVariable Long id) {
 	 	Challenge challenge= challengeService.findById(id);
 	 	
 	 	if(challenge == null) {	
@@ -72,7 +74,15 @@ public class ChallengeController {
 		}
 	} 
 	
-	
+	@GetMapping(path = "/randomCh")
+	public List<Challenge> getChallengesAleatoires() {
+		    List<Challenge> ch = challengeService.getAllChallenges();
+		    int l = ch.size() / 2; 
+		    ch = ch.stream()
+	        .collect(Collectors.toList());
+	    Collections.shuffle(ch);
+	    return ch.subList(0, l);
+	}
 	
 	
 }

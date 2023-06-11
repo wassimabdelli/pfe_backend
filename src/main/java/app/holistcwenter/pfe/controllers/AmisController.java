@@ -41,7 +41,7 @@ public class AmisController {
 	}
 	
 	@DeleteMapping(path = "/{id}") //localhost:8080/amis/3  
-	public void deleteAis(@PathVariable Long id) {
+	public void deleteAmis(@PathVariable Long id) {
         	amisService.deleteAmis(id);
 	}
 	
